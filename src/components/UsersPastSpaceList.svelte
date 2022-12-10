@@ -1,9 +1,5 @@
-<script>
-    // import PollStore from '../stores/PollStore';
-    import {createEventDispatcher} from 'svelte';
-    import { loop_guard } from 'svelte/internal';
-    const dispatch = createEventDispatcher();
-    import Button from '../shared/Button.svelte';    
+<script>    
+    import {createEventDispatcher} from 'svelte';            
     import Card from '../shared/Card.svelte';    
 
     export let user_id; // their twitter id    

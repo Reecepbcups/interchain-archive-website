@@ -4,19 +4,9 @@
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
 
-    import {fade, slide, scale} from 'svelte/transition';
-    import {flip} from 'svelte/animate';
-    
-    import SpaceStore from '../stores/SpaceStore';    
-    import SpaceDetails from './SpaceDetails.svelte';
-
-    import asyncDerivedConsistent from '../stores/consistent'
-    import UserDetails from './UserDetails.svelte';
-
-    // import uuidv4 from 'uuid/v4';
-
-
-    // const data_stream = asyncDerivedConsistent(pokemon_id, fetchImage)
+    // import {fade, slide, scale} from 'svelte/transition';
+    // import {flip} from 'svelte/animate';
+    import UserDetails from './UserDetails.svelte';        
 
     export const queryAllPastSpaces = async () => {
         // {
@@ -84,42 +74,21 @@
     {#await getUsers()}
 	    <p>Loading...</p>
     {:then users}
-        <!-- <p>Spaces {l}</p> -->
-        <!-- {#each l as space (space.id)}    
-            <div in:fade out:slide|local animate:flip={{duration: 500}}>
-                <SpaceDetails space={space} />
-            </div>
-        {/each} -->
-        {#each Object.entries(users) as [id, info]}    
-            <!-- <div in:fade out:slide|local animate:flip={{duration: 500}}>
-                <SpaceDetails space={space} />
-            </div> -->            
-            <!-- <p>{id}</p>
-            <p>{info.name}</p> -->     
-            
+        {#each Object.entries(users) as [id, info]}        
             <div on:click={() => userClickHandler(id)}>
                 <UserDetails user={info} searchTerm={searchTerm}/>
             </div>
 
         {/each}
-
-
     {:catch error}
         <p style="color: red">{error.message}</p>
     {/await}
-
-    <!-- {#each $SpaceStore as space (space.id)}    
-        <div in:fade out:slide|local animate:flip={{duration: 500}}>
-            <SpaceDetails space={space} />
-        </div>
-    {/each} -->
 </div>
 
 <style>
     .space-list {
-        display: grid;          
-        /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
-        grid-template-columns: 1fr 1fr 1fr; /*one fraction of the width*/
+        display: grid;                  
+        grid-template-columns: 1fr 1fr 1fr; /*3 * one fraction of the width = 3 sets*/
         grid-gap: 20px;
     }
 </style>

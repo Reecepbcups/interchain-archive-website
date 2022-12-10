@@ -1,15 +1,8 @@
 <!-- https://fontawesome.com/docs/web/add-icons/how-to -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<script>
-    // import {createEventDispatcher} from 'svelte';
-    // const dispatch = createEventDispatcher();
-    import Card from "../shared/Card.svelte";
-    // import PollStore from "../stores/PollStore";
-    import Button from "../shared/Button.svelte";
-    import { tweened } from "svelte/motion";
+<script>    
+    import Card from "../shared/Card.svelte";    
 
     export let user;    
     // export let searchTerm;
@@ -43,13 +36,6 @@
         <div class="picture">
             <img src={user.profile_image_url} alt="" />            
         </div>
-
-        <!-- make the picture card tall -->
-        <!-- <div class="picture">
-            <img src={user.profile_image_url} alt="" />       
-        </div> -->
-
-
     </div>
 </Card>
 
@@ -89,35 +75,5 @@
     }
     div {
         height: 25%;
-    }
-    /* .answer {
-        background: #fafafa;
-        cursor: pointer;
-        margin: 10px auto;
-        position: relative;
-    }
-    .answer:hover {
-        opacity: 0.6;
-    } */
-    span {
-        display: inline-block;
-        padding: 10px 20px;
-    }
-    /* .percent {
-        height: 100%;
-        position: absolute;
-        box-sizing: border-box;
-    }
-    .percent-a {
-        border-left: 4px solid #d91b42;
-        background: rgba(217, 27, 66, 0.2);
-    }
-    .percent-b {
-        border-left: 4px solid #45c496;
-        background: rgba(69, 196, 150, 0.2);
-    }
-    .delete {
-        margin-top: 30px;
-        text-align: right;
-    } */
+    }    
 </style>
