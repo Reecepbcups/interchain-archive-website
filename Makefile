@@ -1,4 +1,4 @@
-VERSION := 0.0.1
+VERSION := 0.0.2
 
 prod:
 	@npm run build
@@ -6,7 +6,6 @@ prod:
 
 build:
 	@docker build . -t reecepbcups/interchain-archive:${VERSION}
-
 
 push:
 	@docker push reecepbcups/interchain-archive:${VERSION}
