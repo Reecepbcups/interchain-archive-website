@@ -2,7 +2,7 @@
     import {createEventDispatcher} from 'svelte';            
     import Card from '../shared/Card.svelte';    
 
-    export let user_id; // their twitter id
+    export let user_id; // their twitter id    
 
     async function getUsersPastSpacesSorted() {
         // queries https://www.cosmosibc.space/json_data/past_spaces.json, and sees if the id is in the keys list as string
@@ -24,6 +24,30 @@
         return pastSpaces;                        
     }
     let getUsersPastSpacesSortedPromise = getUsersPastSpacesSorted();
+
+    async function getUserInfo(twitter_id) {
+        // queries https://www.cosmosibc.space/json_data/past_spaces.json, and sees if the id is in the keys list as string
+        // if it is, then return the value of that key which is a object of title: path
+
+        const data = await fetch("https://www.cosmosibc.space/json_data/user_data.json");
+        let json = await data.json();        
+        if(json.users) {
+            json = json.users;
+        }
+        
+        if (!json[user_id]) {
+            alert("User not found");
+            return null;
+        }
+        
+        let userData = {
+            name: json[user_id].name,
+            username: json[user_id].username,
+            profile_image_url: json[user_id].profile_image_url,
+        }
+        return userData;                        
+    }
+    let getUserInfoPromise = getUserInfo();
 
     const convertNumberToMonth = (number) => {
         return {1: "January",2: "February",3: "March",4: "April",5: "May",6: "June",7: "July",8: "August",9: "September",10: "October",11: "November",12: "December"}[number];
@@ -55,8 +79,16 @@
 
 {#await getUsersPastSpacesSortedPromise}
     <p>testing for {user_id}</p>
+
 {:then spacesData}
-	<p>User id: {user_id}</p>
+	
+    {#await getUserInfoPromise}
+        <p>User id: {user_id}</p>
+    {:then userInfo}
+        <img src={userInfo.profile_image_url} alt="pfp" width="100" height="100">
+        <h2>{userInfo.name} | <a href="https://twitter.com/{userInfo.username}">@{userInfo.username}</a></h2>        
+        <hr>
+    {/await}
 
     {#each Object.values(spacesData) as title}        
         <div class="spaceContainer">
