@@ -4,9 +4,6 @@
 	import Tabs from './shared/Tabs.svelte';
 	import UserList from './components/UserList.svelte';
     import UsersPastSpaceList from './components/UsersPastSpaceList.svelte';
-	
-	import url from './url';
-
 	$: urlParams = new URLSearchParams(window.location.search);
 
 	let items = ["Home"]

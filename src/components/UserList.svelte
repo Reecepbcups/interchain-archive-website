@@ -28,6 +28,7 @@
         return users;
     }
 
+    // TODO: Sort by number of followers OR number of spaces
     const getUsers = async () => {
         let users = {};
         // Id -> {
@@ -86,7 +87,7 @@
 <style>
     .space-list {
         display: grid;                  
-        grid-template-columns: 1fr 1fr 1fr; /*3 * one fraction of the width = 3 sets*/
+        grid-template-columns: 1fr 1fr 1fr 1fr; /*3 * one fraction of the width = 3 sets*/
         grid-gap: 20px;
     }
 </style>
