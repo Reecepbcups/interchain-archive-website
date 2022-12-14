@@ -1,8 +1,7 @@
 <script>    
     import Card from "../shared/Card.svelte";    
 
-    export let user;    
-    // export let searchTerm;
+    export let user;        
 
     const makeDescClickable = (text) => {
         // using regex, find any words that start with @. If found, replace with a link
@@ -13,27 +12,16 @@
 </script>
 
 <Card>
-    <!-- <div class="space" on:click>        
-        <h3><u><a href="https://twitter.com/{user.username}"> {user.name} </a></u></h3>        
-        <p>{user.description}</p>        
+        <div class="user_profile" on:click>    
+            <!-- <h3>{user.data.name} <u><a href="https://twitter.com/{user.data.username}"> @{user.data.username}</a></u></h3>         -->
+            <h3><u><a href="https://twitter.com/{user.username}"> {user.name} </a></u></h3>        
 
-        <div class="picture">
-            <img src={user.profile_image_url} alt="" />            
-        </div>
-    </div> -->
+            <p style="height: 75px">{user.description}</p>        
 
-
-    <div class="user_profile" on:click>    
-
-        <!-- <h3>{user.data.name} <u><a href="https://twitter.com/{user.data.username}"> @{user.data.username}</a></u></h3>         -->
-        <h3><u><a href="https://twitter.com/{user.username}"> {user.name} </a></u></h3>        
-
-        <p style="height: 75px">{user.description}</p>        
-
-        <div class="picture">
-            <img src={user.profile_image_url} alt="" />            
-        </div>
-    </div>
+            <div class="picture">
+                <img src={user.profile_image_url} alt="" />            
+            </div>
+        </div>    
 </Card>
 
 <style>

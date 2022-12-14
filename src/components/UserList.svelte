@@ -74,10 +74,13 @@
     {#await getUsers()}
 	    <p>Loading...</p>
     {:then users}
-        {#each Object.entries(users) as [id, info]}        
-            <div on:click={() => userClickHandler(id)}>
-                <UserDetails user={info} searchTerm={searchTerm}/>
+        {#each Object.entries(users) as [id, user]}       
+        
+        {#if user.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1}
+            <div on:click={() => userClickHandler(id)}>                
+                <UserDetails user={user} />
             </div>
+        {/if}
 
         {/each}
     {:catch error}
