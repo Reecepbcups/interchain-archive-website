@@ -73,7 +73,7 @@
     {:then users}
         {#each Object.entries(users) as [id, user]}               
             {#if user.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1}
-                <div on:click={() => userClickHandler(id)}>                
+                <div on:click={() => userClickHandler(id)}>
                     <UserDetails user={user} />
                 </div>
             {/if}
