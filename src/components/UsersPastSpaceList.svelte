@@ -83,10 +83,11 @@
 {:then spacesData}
 	
     {#await getUserInfoPromise}
-        <p>User id: {user_id}</p>
+        <p>Loading: {user_id}</p>
     {:then userInfo}
         <img src={userInfo.profile_image_url} alt="pfp" width="100" height="100">
-        <h2>{userInfo.name} | <a href="https://twitter.com/{userInfo.username}">@{userInfo.username}</a></h2>        
+        <h2>{userInfo.name} | <a href="https://twitter.com/{userInfo.username}">@{userInfo.username}</a></h2>
+        <!-- <p>{user_id}</p> -->
         <hr>
     {/await}
 
