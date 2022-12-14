@@ -64,24 +64,19 @@
 
 
 <!-- input search bar -->
-<input type="text" bind:value={searchTerm} placeholder="Search for a user" />
+<input type="text" bind:value={searchTerm} placeholder="Search for a user..." />
 
 <!-- use transition:fade to fade in and out-->
 <div class="space-list">
-
-    
-
     {#await getUsers()}
 	    <p>Loading...</p>
     {:then users}
-        {#each Object.entries(users) as [id, user]}       
-        
-        {#if user.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1}
-            <div on:click={() => userClickHandler(id)}>                
-                <UserDetails user={user} />
-            </div>
-        {/if}
-
+        {#each Object.entries(users) as [id, user]}               
+            {#if user.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1}
+                <div on:click={() => userClickHandler(id)}>                
+                    <UserDetails user={user} />
+                </div>
+            {/if}
         {/each}
     {:catch error}
         <p style="color: red">{error.message}</p>

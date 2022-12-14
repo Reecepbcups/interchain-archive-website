@@ -12,16 +12,17 @@
 </script>
 
 <Card>
-        <div class="user_profile" on:click>    
-            <!-- <h3>{user.data.name} <u><a href="https://twitter.com/{user.data.username}"> @{user.data.username}</a></u></h3>         -->
-            <h3><u><a href="https://twitter.com/{user.username}"> {user.name} </a></u></h3>        
+    <div class="user_profile" on:click>    
+        <!-- <h3>{user.data.name} <u><a href="https://twitter.com/{user.data.username}"> @{user.data.username}</a></u></h3>         -->
+        <h3><u><a href="https://twitter.com/{user.username}"> {user.name} </a></u></h3>        
 
-            <p style="height: 75px">{user.description}</p>        
+        <p style="height: 100px">{user.description}</p>        
 
-            <div class="picture">
-                <img src={user.profile_image_url} alt="" />            
-            </div>
-        </div>    
+        <div class="picture">
+            <!-- onload="this.width/=2;this.onload=null;" -->
+            <img src={user.profile_image_url} alt="" />            
+        </div>
+    </div>    
 </Card>
 
 <style>
@@ -48,9 +49,7 @@
         /* grid */                
     }    
     img {
-        max-width: 100%;
-        /* center */
-        
+        max-width: 300px;        
     }    
     div:hover {
         background-color: #f7f7f7;

@@ -22,8 +22,6 @@
 <main>
 	<Tabs activeItem={activeItem} items={items} on:tabChange={tabChange}/>
 
-	<!-- TODO: https://svelte.dev/repl/d219a64c734d49fc8c4d7dcdcd734e64?version=3.18.1 -->
-
 	{#if activeItem === "Home"}		
 		<UserList on:clickedUser={handleNewUserPage}/>
 	{:else}	

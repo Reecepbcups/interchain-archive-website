@@ -2,7 +2,7 @@
     import {createEventDispatcher} from 'svelte';            
     import Card from '../shared/Card.svelte';    
 
-    export let user_id; // their twitter id    
+    export let user_id; // their twitter id
 
     async function getUsersPastSpacesSorted() {
         // queries https://www.cosmosibc.space/json_data/past_spaces.json, and sees if the id is in the keys list as string
@@ -12,7 +12,16 @@
         const json = await data.json();
         // console.log(Object.keys(json));
         
-        return json[user_id];                        
+        let pastSpaces = json[user_id]
+        
+        // sort the above objects based on the value of the title /2022/10 > /2022/9
+        if(pastSpaces) {
+            let sortedPastSpaces = Object.fromEntries(
+                Object.entries(pastSpaces).sort(([,a],[,b]) => b.localeCompare(a))
+            );
+            return sortedPastSpaces;
+        }
+        return pastSpaces;                        
     }
     let getUsersPastSpacesSortedPromise = getUsersPastSpacesSorted();
 
