@@ -6,6 +6,8 @@ Bot Repo -> <https://github.com/Reecepbcups/cosmos-spaces-automation>
 
 Live Website -> <https://app.cosmosibc.space/>
 
+Developer API / Backend -> <https://cosmosibc.space>
+
 ```bash
 npm run dev
 ```
